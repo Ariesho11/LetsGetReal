@@ -42,7 +42,8 @@ public class RealNumber{
   *the product of this and the other
   */
   public RealNumber multiply(RealNumber other){
-        return null;
+     RealNumber n = new RealNumber(value * other.getValue());
+    return null;
   }
 
   /*
