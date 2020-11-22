@@ -33,7 +33,7 @@ public class RealNumber{
   public RealNumber add(RealNumber other){
      //other can be ANY RealNumber, including a RationalNumber
      //or other subclasses of RealNumber (that aren't written yet)
-     RealNumber n = value+getValue(other);
+     RealNumber n = new RealNumber(value + other.getValue());
      return n;
   }
 
