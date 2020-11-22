@@ -21,7 +21,7 @@ public class RealNumber{
   public boolean equals(RealNumber other){
     double pd1 = ((Math.abs(value-other.getValue()))/(other.getValue())) * 100;
     double pd2 = ((Math.abs(value-other.getValue()))/(value)) * 100;
-    if((pd1 <= 0.0001) && (pd2 <= 0.0001)) return true;
+    if((pd1 <= 0.0000001) && (pd2 <= 0.0000001)) return true;
     if((pd1 == 0)||(pd2 == 0)) return false;
     return false;
   }
@@ -33,7 +33,8 @@ public class RealNumber{
   public RealNumber add(RealNumber other){
      //other can be ANY RealNumber, including a RationalNumber
      //or other subclasses of RealNumber (that aren't written yet)
-     return null;
+     RealNumber n = value+getValue(other);
+     return n;
   }
 
   /*
