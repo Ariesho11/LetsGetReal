@@ -105,12 +105,20 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the sum of this and the other
   */
   public RationalNumber add(RationalNumber other){
-    return null;
+    int lcm = Math.abs(denominator*other.getDenominator())/(gcd(denominator, other.getDenominator()));
+    int n1 = numerator*(lcm/denominator);
+    int n2 = other.getNumerator()*(lcm/other.getDenominator());
+    RationalNumber a = new RationalNumber(n1+n2, lcm);
+    return a;
   }
   /**
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    int lcm = Math.abs(denominator*other.getDenominator())/(gcd(denominator, other.getDenominator()));
+    int n1 = numerator*(lcm/denominator);
+    int n2 = other.getNumerator()*(lcm/other.getDenominator());
+    RationalNumber s = new RationalNumber(n1-n2, lcm);
+    return s;
   }
 }
