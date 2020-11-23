@@ -15,6 +15,7 @@ public class RationalNumber extends RealNumber
     }
     numerator = nume;
     denominator = deno;
+    reduce();
   }
 
   public double getValue(){
@@ -78,7 +79,9 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-
+    int g = gcd(numerator, denominator);
+    numerator = numerator / g;
+    denominator = denominator / g;
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
