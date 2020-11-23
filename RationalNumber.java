@@ -23,15 +23,15 @@ public class RationalNumber extends RealNumber
     numerator = nume;
     denominator = deno;
   }
-    reduce();
-  if (deno == 0){
+  reduce();
+  if ((deno == 0)||(nume == 0)){
     denominator = 1;
     numerator = 0;
     }
   }
 
   public double getValue(){
-    return (numerator/denominator);
+    return ((double)numerator / (double)denominator);
   }
 
   /**
@@ -59,6 +59,7 @@ public class RationalNumber extends RealNumber
   */
   public boolean equals(RationalNumber other){
     if((other.getNumerator() == numerator)&&(other.getDenominator() == denominator)) return true;
+    if(other.getValue() == this.getValue()) return true;
     return false;
   }
 
