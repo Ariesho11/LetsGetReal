@@ -9,13 +9,25 @@ public class RationalNumber extends RealNumber
   */
   public RationalNumber(int nume, int deno){
     super(0.0);//this value is ignored!
-    if (deno == 0){
-      denominator = 1;
-      numerator = 0;
+    if (deno < 0){
+      if (nume < 0){
+        denominator = Math.abs(deno);
+        numerator = Math.abs(nume);
+      }
+      else{
+        denominator = Math.abs(deno);
+        numerator = (0 - nume);
+      }
     }
+    else{
     numerator = nume;
     denominator = deno;
+  }
     reduce();
+  if (deno == 0){
+    denominator = 1;
+    numerator = 0;
+    }
   }
 
   public double getValue(){
@@ -55,7 +67,7 @@ public class RationalNumber extends RealNumber
   *@return the value expressed as "3/4" or "8/3"
   */
   public String toString(){
-    return ""+numerator + "/" + denominator;
+    return ""+getNumerator() + "/" + getDenominator();
   }
 
   /**Calculate the GCD of two integers.
@@ -66,7 +78,7 @@ public class RationalNumber extends RealNumber
   private static int gcd(int a, int b){
     /*use euclids method or a better one*/
     //http://sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
-    int g = 0;
+    int g = 1;
     for(int i = 1; i <= a && i <= b; i++){
         if(((a%i) == 0) && ((b%i) == 0)) g = i;
       }
@@ -79,9 +91,9 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-    int g = gcd(numerator, denominator);
-    numerator = numerator / g;
-    denominator = denominator / g;
+    int g = gcd(getNumerator(), getDenominator());
+    numerator = getNumerator() / g;
+    denominator = getDenominator() / g;
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
@@ -97,7 +109,7 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    RationalNumber quotient = new RationalNumber(numerator/other.getNumerator(), denominator/other.getDenominator());
+    RationalNumber quotient = new RationalNumber(numerator*other.getDenominator(), denominator*other.getNumerator());
     return quotient;
   }
 
