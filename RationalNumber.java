@@ -93,8 +93,8 @@ public class RationalNumber extends Number{
   */
   private void reduce(){
     int g = gcd(getNumerator(), getDenominator());
-    numerator = getNumerator() / g;
-    denominator = getDenominator() / g;
+    numerator = (getNumerator() / g);
+    denominator = (getDenominator() / g);
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
